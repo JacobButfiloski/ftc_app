@@ -88,7 +88,7 @@ public class LinearAutonomousTwo extends LinearOpMode
     @Override
     public void runOpMode()
     {
-        int goldLocation = -1;
+        int goldLocation = 2;
         initVuforia();
 
         if (ClassFactory.getInstance().canCreateTFObjectDetector()) {
@@ -202,12 +202,13 @@ public class LinearAutonomousTwo extends LinearOpMode
                         encoderDrive(1.0, 10, -10, -10, 10, .1);
                     } else if(goldLocation == 2)
                     {
-                        encoderDrive(1.0, -5, -5 , -5, -5, .1);
-                        encoderDrive(1.0, -10, 10, 10, -10, .1);
+                        encoderDrive(1.0, -1000, -1000 , -1000, -1000, .1);
+                        encoderDrive(1.0, -1000, 1000, 1000, -1000, .1);
                     } else if(goldLocation == 3)
                     {
 
                     }
+                    break;
                 }
             }
         }
@@ -333,10 +334,10 @@ public class LinearAutonomousTwo extends LinearOpMode
         rightMotorFront.setTargetPosition(rightTicksFront);
         rightMotorBack.setTargetPosition(rightTicksBack);
 
-        leftMotorFront.setPower(1.0);
-        leftMotorBack.setPower(1.0);
-        rightMotorFront.setPower(1.0);
-        rightMotorBack.setPower(1.0);
+        leftMotorFront.setPower(0.5);
+        leftMotorBack.setPower(0.5);
+        rightMotorFront.setPower(0.5);
+        rightMotorBack.setPower(0.5);
         while(leftMotorFront.isBusy() && opModeIsActive() || rightMotorFront.isBusy() && opModeIsActive())
         {
             //Wait
@@ -370,7 +371,7 @@ public class LinearAutonomousTwo extends LinearOpMode
         {
             actuatorMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             actuatorMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            actuatorMotor.setTargetPosition(3300);
+            actuatorMotor.setTargetPosition(19500);
             actuatorMotor.setPower(1.0);
             while(actuatorMotor.isBusy() && opModeIsActive())
             {
